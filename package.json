@@ -1,0 +1,7 @@
+{
+  "name": "debug-mysql-vitess-large-blob-issue",
+  "packageManager": "yarn@4.4.0",
+  "dependencies": {
+    "mysql2": "^3.11.0"
+  }
+}
