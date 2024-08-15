@@ -14,7 +14,7 @@ async function demo() {
       name varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
       data longblob NOT NULL,
       PRIMARY KEY (name)
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;  
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
   `);
 
   const upsertDocument = async (size) => {
@@ -24,10 +24,10 @@ async function demo() {
         // Create a (:size) MB buffer
         const bufferSize = size * 1024 * 1024; // (:size) MB in bytes
         const largeBuffer = Buffer.alloc(bufferSize);
-  
+
         // Fill the buffer with some data (optional)
         largeBuffer.fill('A');
-  
+
         return largeBuffer;
       })(),
     }
@@ -40,8 +40,6 @@ async function demo() {
         values: [payload.name, payload.data],
       })
       console.log(`SUCCESS upsert on size: ${size}`)
-      console.log(`result`, result)
-      console.log(`fields`, fields)
       return true
     } catch (error) {
       console.error(`FAILED upsert on size: ${size}`)
@@ -52,9 +50,8 @@ async function demo() {
   }
 
   let leftSize = 1;
-  let rightSize = 20;
+  let rightSize = 30;
 
-  
   await upsertDocument(leftSize)
   await upsertDocument(rightSize)
   while (leftSize < rightSize) {
